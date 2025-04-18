@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - EmpowerHer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">EmpowerHer</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="#">Contact</a>
+                <li><a href="#">Map</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Search courses..." id="searchInput">
+            <button class="search-button" id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <div class="search-filters">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="courses">Courses</button>
+            <button class="filter-button" data-filter="resources">Resources</button>
+            <button class="filter-button" data-filter="events">Events</button>
+        </div>
+    </div>
+
+    <!-- Courses Section -->
+    <main class="courses-main">
+        <div class="courses-container">
+            <div class="course-filters">
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <div class="category-filters">
+                        <button class="category-filter active">All</button>
+                        <button class="category-filter">Technology</button>
+                        <button class="category-filter">Business</button>
+                        <button class="category-filter">Leadership</button>
+                        <button class="category-filter">Personal Development</button>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h3>Level</h3>
+                    <div class="level-filters">
+                        <button class="level-filter active">All Levels</button>
+                        <button class="level-filter">Beginner</button>
+                        <button class="level-filter">Intermediate</button>
+                        <button class="level-filter">Advanced</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Web Development">
+                        <span class="course-level">Beginner</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development Basics</h3>
+                        <p class="course-description">Learn the fundamentals of web development including HTML, CSS, and JavaScript.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-user"></i> 120 students</span>
+                        </div>
+                        <button class="enroll-button">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Digital Marketing">
+                        <span class="course-level">Intermediate</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Digital Marketing Fundamentals</h3>
+                        <p class="course-description">Master the essentials of digital marketing, from SEO to social media strategy.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 6 weeks</span>
+                            <span><i class="fas fa-user"></i> 85 students</span>
+                        </div>
+                        <button class="enroll-button">Enroll Now</button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Leadership">
+                        <span class="course-level">Advanced</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>Leadership Skills</h3>
+                        <p class="course-description">Develop essential leadership skills for career advancement and team management.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-user"></i> 65 students</span>
+                        </div>
+                        <button class="enroll-button">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html> 

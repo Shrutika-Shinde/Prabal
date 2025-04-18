@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">EmpowerHer</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="Search courses, resources, or topics..." id="searchInput">
+            <button class="search-button" id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <div class="search-filters">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="courses">Courses</button>
+            <button class="filter-button" data-filter="resources">Resources</button>
+            <button class="filter-button" data-filter="events">Events</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <div class="image-section">
+                <img src="./a.jpg" alt="EmpowerHer Image">
+            </div>
+            <div class="text-section">
+                <div class="background-design">
+                    <div class="floating-shapes">
+                        <div class="shape shape1"></div>
+                        <div class="shape shape2"></div>
+                        <div class="shape shape3"></div>
+                    </div>
+                    <div class="interactive-dots">
+                        <div class="dot dot1"></div>
+                        <div class="dot dot2"></div>
+                        <div class="dot dot3"></div>
+                    </div>
+                </div>
+                <div class="content-overlay">
+                    <div class="decorative-header">
+                        <span class="decorative-line"></span>
+                        <h1>Welcome to <span class="highlight">EmpowerHer</span></h1>
+                        <span class="decorative-line"></span>
+                    </div>
+                    <p class="subtitle"><i class="fas fa-quote-left"></i> Empowering Women Through Education and Support <i class="fas fa-quote-right"></i></p>
+                    <div class="decorative-box">
+                        <p class="description">
+                            At <span class="highlight">EmpowerHer</span>, we believe in creating opportunities for women to grow, learn, and succeed. 
+                            Our platform offers a range of courses and resources designed to help women develop their skills, 
+                            build confidence, and achieve their professional goals.
+                        </p>
+                    </div>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <span>Expert-Led Courses</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span>Supportive Community</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <span>Career Growth</span>
+                        </div>
+                    </div>
+                    <div class="cta-container">
+                        <button class="cta-button">
+                            <span>Get Started</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
