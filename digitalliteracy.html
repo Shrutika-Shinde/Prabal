@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Course Layout Styles */
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: hwb(185 62% 3%);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: rgb(232, 233, 157);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .course-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #6ac3ff;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .course-badge.new {
+            background: #3ff180;
+        }
+        
+        .course-badge.popular {
+            background: #3ff180;
+        }
+        
+        .course-badge.free {
+            background: #3ff180;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-category {
+            color: #ff4d8d;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .course-description {
+            color: #e43aa6;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .enroll-btn {
+            background: linear-gradient(45deg, #301a5a, #97e4a0);
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .enroll-btn:hover {
+            background: linear-gradient(45deg, #7c7ef6, #5fdef7);
+            box-shadow: 0 5px 15px rgba(125, 205, 238, 0.4);
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <body style="background-color:rgb(16, 13, 14);">
+
+    <div class="courses-container">
+        <div class="section-header">
+            <h2>Our Digital Courses</h2>
+            <p>Specially designed courses to take you from beginner to advanced levels at your own pace</p>
+        </div>
+        
+        <div class="course-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
+                    <span class="course-badge free">Free</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Digital Literacy</span>
+                    <h3 class="course-title">Basic Computer Skills</h3>
+                    <p class="course-description">Learn fundamental computer operations, typing, and file management to build your digital foundation.</p>
+                    <div class="course-meta">
+                        
+                        <span class="course-level"><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    <button class="enroll-btn"onclick="window.open('https://www.udemy.com/course/taking-online-classes/')">Start Learning</button>
+                        
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');">
+                    <span class="course-badge popular">Popular</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Career Skills</span>
+                    <h3 class="course-title">Digital Marketing Basics</h3>
+                    <p class="course-description">Discover how to promote products/services online and start your own digital marketing business.</p>
+                    <div class="course-meta">
+                       
+                        <span class="course-level"><i class="fas fa-signal"></i> Intermediate</span>
+                    </div>
+                    <button class="enroll-btn"onclick="window.open('https://www.udemy.com/course/free-digital-marketing-basics-course/')">Start Learning</button>
+                        
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <span class="course-badge new">New</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Data Science </span>
+                    <h3 class="course-title">Data Science & ML</h3>
+                    <p class="course-description">data science and machine learning animation in master class.</p>
+                    <div class="course-meta">
+                        
+                        <span class="course-level"><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/create-3d-animation-professional-with-plotagon-2020/learn/lecture/18582190?start=0#overview')">Start Learning</button>
+                        
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
