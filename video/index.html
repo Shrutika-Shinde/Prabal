@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Development Video Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f9f9f9, #d2e0fb);
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .title-box {
+      background: #ffffffcc;
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #2c3e50;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail img:hover {
+      transform: scale(1.03);
+    }
+
+    .video-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .video-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: #2d3436;
+    }
+
+    .video-description {
+      color: #636e72;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-actions button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #2d3436;
+      transition: background-color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+    }
+
+    .social-actions button:hover {
+      background-color: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .social-actions .fa-heart {
+      color: #ff6b81;
+    }
+
+    .social-actions .fa-comment {
+      color: #feca57;
+    }
+
+    .social-actions .fa-share {
+      color: #1dd1a1;
+    }
+
+    @media screen and (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title-box">
+      <h1>Skill Development Video Gallery</h1>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- Video Cards Below (same as before) -->
+
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=icudf_w_pqU">
+            <img src="https://img.youtube.com/vi/icudf_w_pqU/hqdefault.jpg" alt="Advanced English Tutorial"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Advanced English Tutorial</h3>
+          <p class="video-description">Improve your advanced English skills in this lesson.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=3lOXf7Suy84">
+            <img src="https://img.youtube.com/vi/3lOXf7Suy84/hqdefault.jpg" alt="Leadership Skills"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Leadership Skills</h3>
+          <p class="video-description">Boost your confidence with key leadership techniques.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">856</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">156</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=wF01RSTl6AA">
+            <img src="https://img.youtube.com/vi/wF01RSTl6AA/hqdefault.jpg" alt="Interview Skills"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Interview Skills</h3>
+          <p class="video-description">Master your next job interview with these tips.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">2,100</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">342</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=hE6I9apUvrk">
+            <img src="https://img.youtube.com/vi/hE6I9apUvrk/hqdefault.jpg" alt="Communication Skills"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Communication Skills</h3>
+          <p class="video-description">Enhance your verbal and non-verbal communication.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,800</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">198</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=eHJnEHyyN1Y">
+            <img src="https://img.youtube.com/vi/eHJnEHyyN1Y/hqdefault.jpg" alt="Entrepreneurship"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Entrepreneurship</h3>
+          <p class="video-description">Learn how to start and grow your business successfully.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=eKLfh3ncwF8">
+            <img src="https://img.youtube.com/vi/eKLfh3ncwF8/hqdefault.jpg" alt="E-learning"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>E-learning</h3>
+          <p class="video-description">A modern approach to continuous learning.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment()"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="share()"><i class="fas fa-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fancybox and interaction logic -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    function like(button) {
+      const countSpan = button.querySelector(".count");
+      let count = parseInt(countSpan.textContent.replace(/,/g, ''));
+      count++;
+      countSpan.textContent = count.toLocaleString();
+    }
+
+    function comment() {
+      const comment = prompt("Leave a comment:");
+      if (comment) {
+        alert("Thanks for your feedback!");
+      }
+    }
+
+    function share() {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert("Page link copied to clipboard!"))
+        .catch(err => alert("Failed to copy link"));
+    }
+
+    Fancybox.bind("[data-fancybox]", {
+      YouTube: {
+        autoplay: true,
+        controls: 1,
+        modestbranding: 1
+      }
+    });
+  </script>
+</body>
+</html>
