@@ -1,106 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Development Video Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f9f9f9, #d2e0fb);
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .title-box {
+      background: #ffffffcc;
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #2c3e50;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail img:hover {
+      transform: scale(1.03);
+    }
+
+    .video-info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .video-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: #2d3436;
+    }
+
+    .video-description {
+      color: #636e72;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .social-actions button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #2d3436;
+      transition: background-color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+    }
+
+    .social-actions button:hover {
+      background-color: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .social-actions .fa-heart { color: #ff6b81; }
+    .social-actions .fa-comment { color: #feca57; }
+    .social-actions .fa-share { color: #1dd1a1; }
+
+    .comment-section {
+      font-size: 0.95em;
+      color: #34495e;
+      margin-top: 10px;
+      padding-left: 10px;
+      border-left: 2px solid #dfe6e9;
+    }
+
+    .comment-section p {
+      margin: 5px 0;
+    }
+
+    /* SHARE MODAL STYLES */
+    .share-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .share-modal-content {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 15px;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
+    }
+
+    .share-modal-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      color: #2c3e50;
+    }
+
+    .share-links a {
+      display: block;
+      margin-bottom: 10px;
+      color: #0984e3;
+      text-decoration: none;
+    }
+
+    .share-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copy-link-btn {
+      background: #2ecc71;
+      color: #fff;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close-share {
+      float: right;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #d63031;
+      margin-top: -10px;
+      margin-right: -10px;
+    }
+
+    @media screen and (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <nav class="top-nav">
-        <div class="logo">EmpowerHer</div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="#">Map</a></li>
-        </ul>
-    </nav>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-        <div class="search-wrapper">
-            <input type="text" class="search-input" placeholder="Search courses, resources, or topics..." id="searchInput">
-            <button class="search-button" id="searchButton">
-                <i class="fas fa-search"></i>
-            </button>
-            <div class="search-suggestions" id="searchSuggestions"></div>
-        </div>
-        <div class="search-filters">
-            <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="courses">Courses</button>
-            <button class="filter-button" data-filter="resources">Resources</button>
-            <button class="filter-button" data-filter="events">Events</button>
-        </div>
+  <div class="container">
+    <div class="title-box">
+      <h1>Women's Mental Health</h1>
     </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-wrapper">
-            <div class="image-section">
-                <img src="./a.jpg" alt="EmpowerHer Image">
-            </div>
-            <div class="text-section">
-                <div class="background-design">
-                    <div class="floating-shapes">
-                        <div class="shape shape1"></div>
-                        <div class="shape shape2"></div>
-                        <div class="shape shape3"></div>
-                    </div>
-                    <div class="interactive-dots">
-                        <div class="dot dot1"></div>
-                        <div class="dot dot2"></div>
-                        <div class="dot dot3"></div>
-                    </div>
-                </div>
-                <div class="content-overlay">
-                    <div class="decorative-header">
-                        <span class="decorative-line"></span>
-                        <h1>Welcome to <span class="highlight">EmpowerHer</span></h1>
-                        <span class="decorative-line"></span>
-                    </div>
-                    <p class="subtitle"><i class="fas fa-quote-left"></i> Empowering Women Through Education and Support <i class="fas fa-quote-right"></i></p>
-                    <div class="decorative-box">
-                        <p class="description">
-                            At <span class="highlight">EmpowerHer</span>, we believe in creating opportunities for women to grow, learn, and succeed. 
-                            Our platform offers a range of courses and resources designed to help women develop their skills, 
-                            build confidence, and achieve their professional goals.
-                        </p>
-                    </div>
-                    <div class="features">
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <span>Expert-Led Courses</span>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <span>Supportive Community</span>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <span>Career Growth</span>
-                        </div>
-                    </div>
-                    <div class="cta-container">
-                        <button class="cta-button">
-                            <span>Get Started</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <div class="video-grid">
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=p3uYG17WUig">
+            <img src="https://img.youtube.com/vi/p3uYG17WUig/hqdefault.jpg" alt="Improve your mental Health"/>
+          </a>
         </div>
-    </main>
+        <div class="video-info">
+          <h3>Improve your mental Health</h3>
+          <p class="video-description">Self-care is how you take your power back.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=p3uYG17WUig')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
 
-    <script src="index.js"></script>
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=kkqBCMGbCHA">
+            <img src="https://img.youtube.com/vi/kkqBCMGbCHA/hqdefault.jpg" alt="Women's Mental Health | Stress, Depression & Anxiety"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Women's Mental Health | Stress, Depression & Anxiety</h3>
+          <p class="video-description">You are worthy of happiness and peace of mind.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">856</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">156</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=kkqBCMGbCHA')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=O9qRyFOLdQk">
+            <img src="https://img.youtube.com/vi/O9qRyFOLdQk/hqdefault.jpg" alt="Take charge of your feelings"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Take charge of your feelings</h3>
+          <p class="video-description">Healing is not linear, but it is possible.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">2,100</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">342</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=O9qRyFOLdQk')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
+  <div class="share-modal" id="shareModal">
+    <div class="share-modal-content">
+      <span class="close-share" onclick="closeShareModal()">&times;</span>
+      <h3>Share this video</h3>
+      <div class="share-links" id="shareLinks"></div>
+      <button class="copy-link-btn" onclick="copyLink()">📋 Copy Link</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    let currentVideoURL = '';
+
+    function like(button) {
+      const countSpan = button.querySelector(".count");
+      let count = parseInt(countSpan.textContent.replace(/,/g, ''));
+      count++;
+      countSpan.textContent = count.toLocaleString();
+    }
+
+    function comment(button) {
+      const commentText = prompt("Leave a comment:");
+      if (commentText) {
+        const videoCard = button.closest('.video-info');
+        const commentSection = videoCard.querySelector('.comment-section');
+        const newComment = document.createElement("p");
+        newComment.textContent = `• ${commentText}`;
+        commentSection.appendChild(newComment);
+        alert("Thanks for your feedback!");
+      }
+    }
+
+    function showShareModal(videoURL) {
+      currentVideoURL = videoURL;
+      document.getElementById("shareLinks").innerHTML = `
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(videoURL)}" target="_blank">📘 Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(videoURL)}" target="_blank">🐦 Share on Twitter/X</a>
+        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(videoURL)}" target="_blank">📱 Share on WhatsApp</a>
+        <a href="mailto:?subject=Check this video&body=${encodeURIComponent(videoURL)}" target="_blank">✉️ Share via Email</a>
+      `;
+      document.getElementById("shareModal").style.display = "flex";
+    }
+
+    function closeShareModal() {
+      document.getElementById("shareModal").style.display = "none";
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(currentVideoURL);
+      alert("Link copied to clipboard!");
+    }
+
+    Fancybox.bind("[data-fancybox]", {
+      Youtube: {
+        autoplay: true,
+        controls: true,
+        modestbranding: true
+      }
+    });
+  </script>
 </body>
 </html>
