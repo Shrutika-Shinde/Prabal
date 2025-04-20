@@ -1,0 +1,108 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fdf6e3, #fceabb);
+    min-height: 100vh;
+    color: #333;
+  }
+  
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #d35400;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    color: #5d4037;
+  }
+  
+  .form-section {
+    background: #fff7e6;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input, textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #e0c097;
+    border-radius: 8px;
+    outline-color: #ff9800;
+  }
+  
+  button {
+    background-color: #ff9800;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #fb8c00;
+  }
+  
+  .blog-section h2 {
+    margin-bottom: 1rem;
+    color: #6d4c41;
+  }
+  
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .blog-post {
+    background-color: #fff;
+    border-left: 6px solid #f57c00;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  
+  .blog-post h3 {
+    margin-bottom: 0.5rem;
+    color: #bf360c;
+  }
+  
+  .blog-post p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .blog-post small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #7b6e64;
+    font-size: 0.85rem;
+  }
+  
