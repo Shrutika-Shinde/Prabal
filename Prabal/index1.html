@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Health Video Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f9f0ff, #fce4ec);
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      color: #4a4a4a;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .title-box {
+      background: linear-gradient(135deg, #ff6b9c, #ff8e9e);
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(255, 107, 156, 0.2);
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .sign-in-btn {
+      background: white;
+      color: #ff6b9c;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .sign-in-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: #fce4ec;
+    }
+
+    .mental-health-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #ff6b9c;
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .mental-health-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: #fce4ec;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(255, 107, 156, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(255, 107, 156, 0.15);
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail img:hover {
+      transform: scale(1.03);
+    }
+
+    .video-info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .video-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: #2d3436;
+      background: linear-gradient(135deg, #ff6b9c, #ff8e9e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .video-description {
+      color: #636e72;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .social-actions button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      color: #2d3436;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+    }
+
+    .social-actions button:hover {
+      background: linear-gradient(135deg, #f8bbd0, #f48fb1);
+      transform: translateY(-2px);
+    }
+
+    .social-actions .fa-heart { color: #ff6b81; }
+    .social-actions .fa-comment { color: #feca57; }
+    .social-actions .fa-share { color: #1dd1a1; }
+
+    .comment-section {
+      font-size: 0.95em;
+      color: #34495e;
+      margin-top: 10px;
+      padding-left: 10px;
+      border-left: 2px solid #dfe6e9;
+    }
+
+    .comment-section p {
+      margin: 5px 0;
+    }
+
+    /* SHARE MODAL STYLES */
+    .share-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .share-modal-content {
+      background: linear-gradient(135deg, #fff, #fce4ec);
+      padding: 25px 30px;
+      border-radius: 15px;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: 0 6px 20px rgba(255, 107, 156, 0.15);
+      font-family: Arial, sans-serif;
+    }
+
+    .share-modal-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      color: #2c3e50;
+    }
+
+    .share-links a {
+      display: block;
+      margin-bottom: 10px;
+      color: #0984e3;
+      text-decoration: none;
+    }
+
+    .share-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copy-link-btn {
+      background: linear-gradient(135deg, #ff6b9c, #ff8e9e);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+
+    .copy-link-btn:hover {
+      background: linear-gradient(135deg, #ff8e9e, #ff6b9c);
+      transform: translateY(-2px);
+    }
+
+    .close-share {
+      float: right;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #d63031;
+      margin-top: -10px;
+      margin-right: -10px;
+    }
+
+    /* Sign In Modal Styles */
+    .sign-in-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    .sign-in-content {
+      background: linear-gradient(135deg, #fff, #fce4ec);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 6px 20px rgba(255, 107, 156, 0.15);
+    }
+
+    .sign-in-content h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dfe6e9;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff6b9c, #ff8e9e);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 156, 0.2);
+    }
+
+    .close-sign-in {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #d63031;
+    }
+
+    @media screen and (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title-box">
+      <h1>Women's Mental Health</h1>
+      <a href="index01.html" class="sign-in-btn">Sign In</a>
+    </div>
+
+    <div class="video-grid">
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=p3uYG17WUig">
+            <img src="https://img.youtube.com/vi/p3uYG17WUig/hqdefault.jpg" alt="Improve your mental Health"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Improve your mental Health</h3>
+          <p class="video-description">Self-care is how you take your power back.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=p3uYG17WUig')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=kkqBCMGbCHA">
+            <img src="https://img.youtube.com/vi/kkqBCMGbCHA/hqdefault.jpg" alt="Women's Mental Health | Stress, Depression & Anxiety"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Women's Mental Health | Stress, Depression & Anxiety</h3>
+          <p class="video-description">You are worthy of happiness and peace of mind.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">856</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">156</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=kkqBCMGbCHA')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=O9qRyFOLdQk">
+            <img src="https://img.youtube.com/vi/O9qRyFOLdQk/hqdefault.jpg" alt="Take charge of your feelings"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Take charge of your feelings</h3>
+          <p class="video-description">Healing is not linear, but it is possible.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">2,100</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">342</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=O9qRyFOLdQk')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
+  <div class="share-modal" id="shareModal">
+    <div class="share-modal-content">
+      <span class="close-share" onclick="closeShareModal()">&times;</span>
+      <h3>Share this video</h3>
+      <div class="share-links" id="shareLinks"></div>
+      <button class="copy-link-btn" onclick="copyLink()">📋 Copy Link</button>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div class="sign-in-modal" id="signInModal">
+    <div class="sign-in-content">
+      <span class="close-sign-in" onclick="closeSignInModal()">&times;</span>
+      <h2>Sign In</h2>
+      <form id="signInForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="submit-btn">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    let currentVideoURL = '';
+
+    function like(button) {
+      const countSpan = button.querySelector(".count");
+      let count = parseInt(countSpan.textContent.replace(/,/g, ''));
+      count++;
+      countSpan.textContent = count.toLocaleString();
+    }
+
+    function comment(button) {
+      const commentText = prompt("Leave a comment:");
+      if (commentText) {
+        const videoCard = button.closest('.video-info');
+        const commentSection = videoCard.querySelector('.comment-section');
+        const newComment = document.createElement("p");
+        newComment.textContent = `• ${commentText}`;
+        commentSection.appendChild(newComment);
+        alert("Thanks for your feedback!");
+      }
+    }
+
+    function showShareModal(videoURL) {
+      currentVideoURL = videoURL;
+      document.getElementById("shareLinks").innerHTML = `
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(videoURL)}" target="_blank">📘 Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(videoURL)}" target="_blank">🐦 Share on Twitter/X</a>
+        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(videoURL)}" target="_blank">📱 Share on WhatsApp</a>
+        <a href="mailto:?subject=Check this video&body=${encodeURIComponent(videoURL)}" target="_blank">✉️ Share via Email</a>
+      `;
+      document.getElementById("shareModal").style.display = "flex";
+    }
+
+    function closeShareModal() {
+      document.getElementById("shareModal").style.display = "none";
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(currentVideoURL);
+      alert("Link copied to clipboard!");
+    }
+
+    function showSignInModal() {
+      document.getElementById("signInModal").style.display = "flex";
+    }
+
+    function closeSignInModal() {
+      document.getElementById("signInModal").style.display = "none";
+    }
+
+    document.getElementById("signInForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      
+      // Here you would typically send the credentials to your backend
+      // For now, we'll just show an alert
+      alert("Sign in attempt with email: " + email);
+      closeSignInModal();
+    });
+
+    Fancybox.bind("[data-fancybox]", {
+      Youtube: {
+        autoplay: true,
+        controls: true,
+        modestbranding: true
+      }
+    });
+  </script>
+</body>
+</html>

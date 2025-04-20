@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Empowering Rural Girls - Grameen Shakti</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #FF6B6B;
+      --secondary-color: #4ECDC4;
+      --accent-color: #FFE66D;
+      --text-color: #2C3E50;
+      --background-color: #FFF5E6;
+      --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #ff8e9e 100%);
+      --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #45B7AF 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .top-nav {
+      background: var(--gradient-1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-1);
+      border-radius: 15px;
+      z-index: -1;
+      opacity: 0.1;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo:hover::before {
+      opacity: 0.2;
+      transform: scale(1.05);
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      font-size: 1.8rem;
+      vertical-align: middle;
+      color: var(--accent-color);
+      text-shadow: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a.active {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .title-box {
+      background: var(--gradient-1);
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(255, 107, 156, 0.2);
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .slogan-box {
+      background: var(--gradient-2);
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(78, 205, 196, 0.2);
+    }
+
+    .slogan-box h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .slogan-box p {
+      margin: 0;
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .cta-button-container {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--gradient-1);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(255, 107, 156, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(255, 107, 156, 0.15);
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumbnail img:hover {
+      transform: scale(1.03);
+    }
+
+    .video-info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .video-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: var(--primary-color);
+    }
+
+    .video-description {
+      color: var(--text-color);
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .social-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .social-actions button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: var(--gradient-1);
+      color: white;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+    }
+
+    .social-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 107, 156, 0.3);
+    }
+
+    .social-actions .fa-heart { color: white; }
+    .social-actions .fa-comment { color: white; }
+    .social-actions .fa-share { color: white; }
+
+    .comment-section {
+      font-size: 0.95em;
+      color: var(--text-color);
+      margin-top: 10px;
+      padding-left: 10px;
+      border-left: 2px solid var(--secondary-color);
+    }
+
+    .comment-section p {
+      margin: 5px 0;
+    }
+
+    @media screen and (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="logo">
+      <i class="fas fa-seedling"></i>
+      Grameen Shakti
+    </div>
+    <div class="nav-links">
+      <a href="home1.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index google map.html">Map</a>
+      <a href="index6.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="slogan-box">
+      <h1 class="slogan">Empower One, Transform Many</h1>
+      <p class="slogan-subtitle">Four Girls, One Mission: Educating Rural India</p>
+    </div>
+
+    <div class="video-grid">
+      <!-- Mental Health Courses -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=p3uYG17WUig">
+            <img src="https://img.youtube.com/vi/p3uYG17WUig/hqdefault.jpg" alt="Mental Health"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Mental Health & Self-Care</h3>
+          <p class="video-description">Learn essential self-care practices and mental health management techniques for a balanced life.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,200</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">234</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=p3uYG17WUig')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=kkqBCMGbCHA">
+            <img src="https://img.youtube.com/vi/kkqBCMGbCHA/hqdefault.jpg" alt="Stress Management"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Stress & Anxiety Management</h3>
+          <p class="video-description">Master techniques to manage stress, depression, and anxiety in daily life.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">856</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">156</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=kkqBCMGbCHA')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=O9qRyFOLdQk">
+            <img src="https://img.youtube.com/vi/O9qRyFOLdQk/hqdefault.jpg" alt="Emotional Wellness"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Emotional Wellness</h3>
+          <p class="video-description">Develop emotional intelligence and learn to take charge of your feelings effectively.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">2,100</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">342</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=O9qRyFOLdQk')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <!-- Skill Development Courses -->
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=icudf_w_pqU">
+            <img src="https://img.youtube.com/vi/icudf_w_pqU/hqdefault.jpg" alt="Digital Literacy"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Digital Literacy</h3>
+          <p class="video-description">Master essential digital skills for the modern world, from basic computer operations to online safety.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,500</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">289</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=icudf_w_pqU')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=3lOXf7Suy84">
+            <img src="https://img.youtube.com/vi/3lOXf7Suy84/hqdefault.jpg" alt="Leadership Skills"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Leadership Skills</h3>
+          <p class="video-description">Develop confidence, communication, and leadership abilities to make a difference.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">1,800</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">312</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=3lOXf7Suy84')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumbnail">
+          <a data-fancybox href="https://www.youtube.com/watch?v=wF01RSTl6AA">
+            <img src="https://img.youtube.com/vi/wF01RSTl6AA/hqdefault.jpg" alt="Entrepreneurship"/>
+          </a>
+        </div>
+        <div class="video-info">
+          <h3>Entrepreneurship</h3>
+          <p class="video-description">Learn how to start and grow your own business with practical skills and real-world examples.</p>
+          <div class="social-actions">
+            <button onclick="like(this)"><i class="fas fa-heart"></i> <span class="count">2,300</span></button>
+            <button onclick="comment(this)"><i class="fas fa-comment"></i> <span class="count">421</span></button>
+            <button onclick="showShareModal('https://www.youtube.com/watch?v=wF01RSTl6AA')"><i class="fas fa-share"></i> Share</button>
+          </div>
+          <div class="comment-section"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    function like(button) {
+      const countSpan = button.querySelector(".count");
+      let count = parseInt(countSpan.textContent.replace(/,/g, ''));
+      count++;
+      countSpan.textContent = count.toLocaleString();
+    }
+
+    function comment(button) {
+      const commentText = prompt("Leave a comment:");
+      if (commentText) {
+        const videoCard = button.closest('.video-info');
+        const commentSection = videoCard.querySelector('.comment-section');
+        const newComment = document.createElement("p");
+        newComment.textContent = `• ${commentText}`;
+        commentSection.appendChild(newComment);
+        alert("Thanks for your feedback!");
+      }
+    }
+
+    function showShareModal(videoURL) {
+      navigator.clipboard.writeText(videoURL)
+        .then(() => alert("Video link copied to clipboard!"))
+        .catch(err => alert("Failed to copy link"));
+    }
+
+    Fancybox.bind("[data-fancybox]", {
+      YouTube: {
+        autoplay: true,
+        controls: 1,
+        modestbranding: 1
+      }
+    });
+  </script>
+</body>
+</html>

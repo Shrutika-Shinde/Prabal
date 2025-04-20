@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Literacy - Grameen Shakti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --text-color: #2C3E50;
+            --background-color: #FFF5E6;
+            --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #ff8e9e 100%);
+            --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #45B7AF 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .top-nav {
+            background: var(--gradient-1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0.1;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo:hover::before {
+            opacity: 0.2;
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+            vertical-align: middle;
+            color: var(--accent-color);
+            text-shadow: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .hero-courses {
+            min-height: 40vh;
+            background: var(--gradient-1);
+            padding: 4rem 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-courses h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-courses p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-category {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        .course-description {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .enroll-btn {
+            background: var(--gradient-1);
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .enroll-btn:hover {
+            background: var(--gradient-2);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero-courses h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--gradient-1);
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">
+            <i class="fas fa-seedling"></i>
+            Grameen Shakti
+        </div>
+        <div class="nav-links">
+            <a href="home1.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index google map.html">Map</a>
+            <a href="index6.html">Contact</a>
+            <a href="blogs/index blog.html">Blog</a>
+        </div>
+    </nav>
+
+    <section class="hero-courses">
+        <h1>Digital Literacy Courses</h1>
+        <p>Empowering women with essential digital skills to thrive in the modern world</p>
+    </section>
+
+    <div class="courses-container">
+        <div class="course-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">Free</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Digital Literacy</span>
+                    <h3 class="course-title">Basic Computer Skills</h3>
+                    <p class="course-description">Learn fundamental computer operations, typing, and file management to build your digital foundation.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/taking-online-classes/')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">Popular</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Career Skills</span>
+                    <h3 class="course-title">Digital Marketing Basics</h3>
+                    <p class="course-description">Discover how to promote products/services online and start your own digital marketing business.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/free-digital-marketing-basics-course/')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Data Science</span>
+                    <h3 class="course-title">Data Science & ML</h3>
+                    <p class="course-description">Data science and machine learning animation in master class.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/create-3d-animation-professional-with-plotagon-2020/learn/lecture/18582190?start=0#overview')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Digital Literacy</span>
+                    <h3 class="course-title">Internet Safety & Privacy</h3>
+                    <p class="course-description">Protect yourself online with essential cybersecurity knowledge and privacy protection techniques.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/the-essential-guide-to-online-privacy-security/')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 5 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Management</span>
+                    <h3 class="course-title">Business & Leadership</h3>
+                    <p class="course-description">The Fundamentals of Public Speaking, Sales, Persuasion, Influence, Pitching, and Reputation Management.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/free-course-business-management-leadership-fundamentals/learn/lecture/18558702#overview')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course 6 -->
+            <div class="course-card">
+                <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-category">Networking</span>
+                    <h3 class="course-title">Network Fundamentals</h3>
+                    <p class="course-description">Learn about bridges, hubs, switches, routers, firewalls, servers, clients and many other network fundamentals.</p>
+                    <button class="enroll-btn" onclick="window.open('https://www.udemy.com/course/free-ccna-200-301-network-fundamentals/learn/lecture/22093280#overview')">
+                        <i class="fas fa-play"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

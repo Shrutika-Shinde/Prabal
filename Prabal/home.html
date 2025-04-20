@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerHer - Empowering Women Through Education</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6b9c;
+            --secondary-color: #ffb6c1;
+            --accent-color: #ffd1dc;
+            --text-color: #4a4a4a;
+            --light-bg: #fff5f7;
+            --gradient-1: linear-gradient(135deg, #ff6b9c 0%, #ffb6c1 100%);
+            --gradient-2: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
+            --glossy-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .top-nav {
+            background: var(--gradient-1);
+            box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+        }
+
+        .logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .search-wrapper {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(255, 107, 156, 0.2);
+        }
+
+        .search-button {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.3);
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background: var(--light-bg);
+            color: var(--text-color);
+            border: 2px solid var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-button.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image-section {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1);
+            height: 500px;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            filter: brightness(0.95);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        .image-section:hover img {
+            transform: scale(1.02);
+        }
+
+        .image-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.2)
+            );
+            pointer-events: none;
+        }
+
+        .text-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1);
+        }
+
+        .text-section h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            position: relative;
+        }
+
+        .text-section h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-1);
+            margin-top: 1rem;
+            border-radius: 2px;
+        }
+
+        .text-section p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.1);
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .impact-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .feature a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .feature-content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.2);
+        }
+
+        .feature h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .feature p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Initiative Section Styles */
+        .initiative-section {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .slogan-section {
+            background: var(--gradient-1);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.2);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .slogan {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .slogan-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .initiative-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1);
+        }
+
+        .founders-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .founder-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .founder-card h3 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .founder-card .role {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .founder-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .mission-section {
+            margin-top: 3rem;
+        }
+
+        .mission-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .mission-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .mission-point {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mission-point a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .mission-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.2);
+        }
+
+        .mission-point i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .mission-point h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .mission-point:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .mission-point p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .signup-button {
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+        }
+
+        .signup-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: var(--glossy-gradient);
+            opacity: 0.3;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.3);
+            background: var(--gradient-2);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .search-wrapper {
+                flex-direction: column;
+            }
+
+            .search-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .slogan {
+                font-size: 2rem;
+            }
+
+            .founders-section {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-points {
+                grid-template-columns: 1fr;
+            }
+
+            .image-section {
+                height: 300px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--gradient-1);
+                padding: 1rem;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .signup-button {
+                margin-top: 1rem;
+                text-align: center;
+            }
+
+            .impact-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .impact-stat {
+                padding: 0.5rem;
+            }
+            
+            .text-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .search-suggestions {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+        }
+
+        .search-suggestions h4 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .suggestion-tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .suggestion-tag:hover {
+            background: var(--gradient-1);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.2);
+            border-radius: 10px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-btn i {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">🌸 Empowering Her</div>
+        <div class="nav-links">
+            <a href="home.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="map.html">Map</a>
+            <a href="index6.html">Contact</a>
+            <a href="safety.html">Safety & Health</a>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for courses...">
+            <button id="searchButton" class="search-button">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+        </div>
+        <div id="searchSuggestions" class="search-suggestions">
+            <h4>Popular Searches:</h4>
+            <div class="suggestion-tags">
+                <span class="suggestion-tag">Mental health</span>
+                <span class="suggestion-tag">Educational courses</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="image-section">
+            <img src="a.jpg" alt="EmpowerHer Initiative">
+        </div>
+        <div class="text-section">
+            <h1>Empowering Women, Transforming Communities</h1>
+            <p>Welcome to EmpowerHer, where we believe in the transformative power of education and community support. Our initiative is dedicated to breaking barriers and creating opportunities for women in rural India.</p>
+        </div>
+    </main>
+
+    <!-- Initiative Section -->
+    <section class="initiative-section">
+        <div class="slogan-section">
+            <h1 class="slogan">Empower One, Transform Many</h1>
+            <p class="slogan-subtitle">Four Girls, One Mission: Educating Rural India</p>
+        </div>
+
+        <div class="initiative-container">
+            <h2>Meet Our Founders</h2>
+            <div class="founders-section">
+                <div class="founders">
+                    <div class="founder-card">
+                        <h3>Shrutika Shinde</h3>
+                        <div class="role">Founder & CEO</div>
+                        <p>Passionate about women's education and empowerment, leading the initiative with vision and dedication.</p>
+                    </div>
+                    <div class="founder-card">
+                        <h3>Akshata Shirke</h3>
+                        <div class="role">Education Director</div>
+                        <p>Expert in curriculum development and educational strategies for rural communities.</p>
+                    </div>
+                    <div class="founder-card">
+                        <h3>Daivata Potekar</h3>
+                        <div class="role">Community Outreach</div>
+                        <p>Building strong relationships with rural communities and local stakeholders.</p>
+                    </div>
+                    <div class="founder-card">
+                        <h3>Vaishnavi Mohite</h3>
+                        <div class="role">Technology Lead</div>
+                        <p>Implementing digital solutions to enhance learning experiences in rural areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Large Tabs Section -->
+    <div class="large-tabs" style="display: flex; gap: 2rem; padding: 2rem; max-width: 1200px; margin: 2rem auto;">
+        <div class="tab" style="flex: 1; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1); overflow: hidden; cursor: pointer; transition: all 0.3s ease;">
+            <a href="digital-literacy.html" style="text-decoration: none; color: inherit; display: block;">
+                <div style="background: var(--light-bg); padding: 2rem; text-align: center;">
+                    <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 1rem;">Digital Literacy</h3>
+                    <p style="color: var(--text-color); font-size: 1rem; line-height: 1.6;">Equipping girls with digital skills for the modern world.</p>
+                </div>
+            </a>
+        </div>
+        <div class="tab" style="flex: 1; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1); overflow: hidden; cursor: pointer; transition: all 0.3s ease;">
+            <a href="community.html" style="text-decoration: none; color: inherit; display: block;">
+                <div style="background: var(--light-bg); padding: 2rem; text-align: center;">
+                    <i class="fas fa-hand-holding-heart" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 1rem;">Join Communities</h3>
+                    <p style="color: var(--text-color); font-size: 1rem; line-height: 1.6;">Building strong community networks to support girls' education.</p>
+                </div>
+            </a>
+        </div>
+        <div class="tab" style="flex: 1; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1); overflow: hidden; cursor: pointer; transition: all 0.3s ease;">
+            <a href="quality-education.html" style="text-decoration: none; color: inherit; display: block;">
+                <div style="background: var(--light-bg); padding: 2rem; text-align: center;">
+                    <i class="fas fa-book-open" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 1rem;">Quality Education</h3>
+                    <p style="color: var(--text-color); font-size: 1rem; line-height: 1.6;">Providing access to quality education and learning resources for rural girls.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
