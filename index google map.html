@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Interactive Map with Google Maps API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #FFF5E6;
+            color: #2C3E50;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #FF6B6B;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .description {
+            color: #2C3E50;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .description b {
+            color: #FF6B6B;
+        }
+
+        .map-wrapper {
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        gmp-map {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .map-wrapper {
+                height: 400px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Explore Locations with Google Maps API</h1>
+      <p class="description">
+        This interactive map represents more than just places — it symbolizes opportunity. <b>Empowering rural girls to travel the world freely fosters confidence, independence, and global understanding</b>. By providing access to education, resources, and safe travel opportunities, we can inspire young women from villages and small towns to explore beyond boundaries and chase their dreams fearlessly. Every marker on this map could represent a journey of courage and growth.
+      </p>
+
+      <div class="map-wrapper">
+        <gmp-map
+          center="20.5937,78.9629"
+          zoom="5"
+          map-id="DEMO_MAP_ID"
+        >
+          <gmp-advanced-marker position="25.01998904409496, 85.3803359952775" title="Nalanda University"></gmp-advanced-marker>
+          <gmp-advanced-marker position="19.61,73.79" title="Vision Academy"></gmp-advanced-marker>
+          <gmp-advanced-marker position="30.12,77.26" title="Urja Coworking Yamunanagar"></gmp-advanced-marker>
+          <gmp-advanced-marker position="17.625220446298133, 74.01658604217076" title="Priyanka Shoe Mart Shendre"></gmp-advanced-marker>
+          <gmp-advanced-marker position="18.57188223341162, 73.80928637745464" title="Business Hive, Pune"></gmp-advanced-marker>
+          <gmp-advanced-marker position="21.15778883480716, 79.0701204863055" title="Vidarbha Industries Association (VIA)"></gmp-advanced-marker>
+        </gmp-map>
+      </div>
+    </div>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=maps,marker&v=beta"
+      defer
+    ></script>
+  </body>
+</html>

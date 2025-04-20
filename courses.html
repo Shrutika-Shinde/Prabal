@@ -6,117 +6,198 @@
     <title>Courses - EmpowerHer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6b9c;
+            --secondary-color: #ffb6c1;
+            --accent-color: #ffd1dc;
+            --text-color: #4a4a4a;
+            --light-bg: #fff5f7;
+            --gradient-1: linear-gradient(135deg, #ff6b9c 0%, #ffb6c1 100%);
+            --gradient-2: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .top-nav {
+            background: var(--gradient-1);
+            box-shadow: 0 2px 10px rgba(255, 107, 156, 0.2);
+        }
+
+        .nav-links a {
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 107, 156, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 156, 0.2);
+        }
+
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .course-content p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .course-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .course-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 156, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
-        <div class="logo">EmpowerHer</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="courses.html" class="active">Courses</a></li>
-            <li><a href="#">Contact</a>
-                <li><a href="#">Map</a>
-            </li>
-        </ul>
+        <div class="logo">🌸 Empowering Her</div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html" class="active">Courses</a>
+            <a href="map.html">Map</a>
+            <a href="contact.html">Contact</a>
+            <a href="safety.html">Safety & Health</a>
+        </div>
     </nav>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-        <div class="search-wrapper">
-            <input type="text" class="search-input" placeholder="Search courses..." id="searchInput">
-            <button class="search-button" id="searchButton">
-                <i class="fas fa-search"></i>
-            </button>
-            <div class="search-suggestions" id="searchSuggestions"></div>
+    <div class="courses-container">
+        <!-- Mental Health Section -->
+        <div class="section-title">
+            <h1>Mental Health Courses</h1>
+            <p>Empowering women through mental health awareness and support</p>
         </div>
-        <div class="search-filters">
-            <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="courses">Courses</button>
-            <button class="filter-button" data-filter="resources">Resources</button>
-            <button class="filter-button" data-filter="events">Events</button>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mental Health Support">
+                </div>
+                <div class="course-content">
+                    <h3>Mental Health Support</h3>
+                    <p>Learn about mental health awareness, coping strategies, and self-care techniques to maintain emotional well-being.</p>
+                    <a href="index1.html" class="course-button">View Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill Development Section -->
+        <div class="section-title">
+            <h1>Skill Development Courses</h1>
+            <p>Enhance your professional and personal skills for better opportunities</p>
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Skill Development">
+                </div>
+                <div class="course-content">
+                    <h3>Skill Development</h3>
+                    <p>Access courses on digital literacy, communication skills, and professional development to boost your career.</p>
+                    <a href="index3.html" class="course-button">View Courses</a>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Courses Section -->
-    <main class="courses-main">
-        <div class="courses-container">
-            <div class="course-filters">
-                <div class="filter-section">
-                    <h3>Categories</h3>
-                    <div class="category-filters">
-                        <button class="category-filter active">All</button>
-                        <button class="category-filter">Technology</button>
-                        <button class="category-filter">Business</button>
-                        <button class="category-filter">Leadership</button>
-                        <button class="category-filter">Personal Development</button>
-                    </div>
-                </div>
-                <div class="filter-section">
-                    <h3>Level</h3>
-                    <div class="level-filters">
-                        <button class="level-filter active">All Levels</button>
-                        <button class="level-filter">Beginner</button>
-                        <button class="level-filter">Intermediate</button>
-                        <button class="level-filter">Advanced</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="courses-grid">
-                <!-- Course Card 1 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Web Development">
-                        <span class="course-level">Beginner</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Web Development Basics</h3>
-                        <p class="course-description">Learn the fundamentals of web development including HTML, CSS, and JavaScript.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 8 weeks</span>
-                            <span><i class="fas fa-user"></i> 120 students</span>
-                        </div>
-                        <button class="enroll-button">Enroll Now</button>
-                    </div>
-                </div>
-
-                <!-- Course Card 2 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Digital Marketing">
-                        <span class="course-level">Intermediate</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Digital Marketing Fundamentals</h3>
-                        <p class="course-description">Master the essentials of digital marketing, from SEO to social media strategy.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 6 weeks</span>
-                            <span><i class="fas fa-user"></i> 85 students</span>
-                        </div>
-                        <button class="enroll-button">Enroll Now</button>
-                    </div>
-                </div>
-
-                <!-- Course Card 3 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Leadership">
-                        <span class="course-level">Advanced</span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Leadership Skills</h3>
-                        <p class="course-description">Develop essential leadership skills for career advancement and team management.</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-clock"></i> 10 weeks</span>
-                            <span><i class="fas fa-user"></i> 65 students</span>
-                        </div>
-                        <button class="enroll-button">Enroll Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
 
     <script src="index.js"></script>
 </body>

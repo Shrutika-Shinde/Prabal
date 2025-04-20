@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Initiative - EmpowerHer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .initiative-main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slogan-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slogan-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2" opacity="0.1"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .slogan {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .slogan-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .initiative-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .founders-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .founder-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .founder-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid #2ecc71;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-role {
+            color: #2ecc71;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .founder-bio {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .mission-section h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .mission-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .mission-point {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .mission-point i {
+            color: #2ecc71;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .mission-point h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .mission-point p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .impact-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-stat {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .impact-stat h3 {
+            color: #2ecc71;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stat p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .slogan {
+                font-size: 2rem;
+            }
+
+            .slogan-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .founders-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="logo">EmpowerHer</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="safety.html">Safety & Health</a></li>
+        </ul>
+    </nav>
+
+    <!-- Initiative Section -->
+    <main class="initiative-main">
+        <div class="slogan-section">
+            <h1 class="slogan">Empower One, Transform Many</h1>
+            <p class="slogan-subtitle">Four Girls, One Mission: Educating Rural India</p>
+        </div>
+
+        <div class="initiative-container">
+            <h2>Meet Our Founders</h2>
+            <div class="founders-section">
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="founder1.jpg" alt="Founder 1">
+                    </div>
+                    <h3 class="founder-name">Priya Sharma</h3>
+                    <p class="founder-role">Education Advocate</p>
+                    <p class="founder-bio">Passionate about making quality education accessible to every rural girl in India.</p>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="founder2.jpg" alt="Founder 2">
+                    </div>
+                    <h3 class="founder-name">Ananya Patel</h3>
+                    <p class="founder-role">Community Leader</p>
+                    <p class="founder-bio">Dedicated to creating sustainable educational programs for rural communities.</p>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="founder3.jpg" alt="Founder 3">
+                    </div>
+                    <h3 class="founder-name">Meera Desai</h3>
+                    <p class="founder-role">Technology Expert</p>
+                    <p class="founder-bio">Bringing digital education solutions to remote areas of Maharashtra.</p>
+                </div>
+
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="founder4.jpg" alt="Founder 4">
+                    </div>
+                    <h3 class="founder-name">Riya Kapoor</h3>
+                    <p class="founder-role">Social Entrepreneur</p>
+                    <p class="founder-bio">Creating opportunities for rural girls through skill development programs.</p>
+                </div>
+            </div>
+
+            <div class="mission-section">
+                <h2>Our Mission</h2>
+                <div class="mission-points">
+                    <div class="mission-point">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Quality Education</h3>
+                        <p>Providing access to quality education and learning resources for rural girls.</p>
+                    </div>
+                    <div class="mission-point">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Community Support</h3>
+                        <p>Building strong community networks to support girls' education.</p>
+                    </div>
+                    <div class="mission-point">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Digital Literacy</h3>
+                        <p>Equipping girls with digital skills for the modern world.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-section">
+                <h2>Our Impact</h2>
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <h3>500+</h3>
+                        <p>Girls Educated</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>25+</h3>
+                        <p>Villages Reached</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>15+</h3>
+                        <p>Schools Partnered</p>
+                    </div>
+                    <div class="impact-stat">
+                        <h3>100%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
